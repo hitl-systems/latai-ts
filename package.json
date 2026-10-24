@@ -1,0 +1,41 @@
+{
+  "name": "latai",
+  "version": "0.1.0",
+  "description": "Node binding of the latai C ABI (liblatai): run packs, stream tokens, stream audio, manage packs.",
+  "license": "(Apache-2.0 OR MIT)",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hitl-systems/latai-ts.git"
+  },
+  "main": "./index.cjs",
+  "module": "./index.mjs",
+  "types": "./index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./index.d.mts",
+        "default": "./index.mjs"
+      },
+      "require": {
+        "types": "./index.d.cts",
+        "default": "./index.cjs"
+      }
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "index.*",
+    "lib",
+    "generated",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "koffi": "^2.9.0 || ^3.0.0"
+  },
+  "scripts": {
+    "test": "node --test --test-concurrency=1 test/*.test.cjs"
+  }
+}
