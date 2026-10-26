@@ -1,14 +1,19 @@
 # latai (Node.js)
 
 Node binding of the latai C ABI over [koffi](https://koffi.dev) (MIT): promises, async iterators,
-TypeScript typings, CommonJS and ES modules. Node 18 or later. Guide: [docs/sdk.md](../../docs/sdk.md).
+TypeScript typings, CommonJS and ES modules. Node 18 or later.
 
 ```text
-cd sdk/node && npm install          # fetches koffi; node_modules is ignored by git
+npm install github:hitl-systems/latai-ts
 ```
 
+This installs the JavaScript package only. The latai engine (`liblatai`) is not in this repository. Until the
+`@latai/core-<platform>-<arch>` npm packages with the engine inside are published, unpack the core archive for your platform and point
+`LATAI_LIB` at it. One core is pinned so far: Linux x86_64, glibc 2.28 or newer.
+
 `liblatai` is found through `LATAI_LIB` (a file or its folder), `LATAI_LIB_DIR`, `Runtime.open({lib})`,
-the package folder, a source checkout's `target/debug`, the system folders, or the loader path.
+an installed `@latai/core-<platform>-<arch>` package, the package folder, the system folders, or the
+loader path.
 Every call into the library runs on one worker thread per runtime, so the event loop never blocks.
 
 ```js
